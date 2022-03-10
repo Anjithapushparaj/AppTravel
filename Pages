@@ -1,0 +1,27 @@
+Pages,
+    Customer Data - Creation / Edit
+        > customerType : Package Based Customer - 'packBased' ( customerType = 'packBased' ).
+        > customerType : Non Package Based Customer - 'nonPackBased' ( customerType = 'nonPackBased' ).
+        > customerName : customerName
+        > Address :
+        > Location :
+        > Phone :
+        > Email :
+        > Package :
+        > Discount :
+        > Trip Start Date :
+        > Trip End Date :
+        > Trip Status :
+
+    
+    Package Creation Pages / Edit
+        > Destination :
+        > Sublocations :
+        > Travel Options :
+        > Food Options :
+        > Price :
+
+
+Customer Module
+    Customer creation component.
+    Customer list component.
