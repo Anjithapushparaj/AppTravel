@@ -17,6 +17,7 @@ export class PackageComponent implements OnInit {
   getPackages(){
     const abc = this.pkgService.getUserName();
     console.log(abc);
+    // asychronous call     
     this.pkgService.fetchPackages().subscribe((pkgData) => {
       this.packages = pkgData;
       console.log(pkgData);

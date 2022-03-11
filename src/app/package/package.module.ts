@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PackageComponent } from './package.component';
 import { ListPackageComponent } from './list-package/list-package.component';
 import { AddPackageComponent } from './add-package/add-package.component';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 
 
@@ -13,7 +14,8 @@ import { AddPackageComponent } from './add-package/add-package.component';
     AddPackageComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    TooltipModule
   ],
   
   exports:[PackageComponent]

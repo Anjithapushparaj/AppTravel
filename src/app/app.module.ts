@@ -18,9 +18,9 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     AppRoutingModule,
     SharedModule,
     PackageModule,
-    TooltipModule.forRoot()
+    TooltipModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
