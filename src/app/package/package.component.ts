@@ -30,7 +30,6 @@ export class PackageComponent implements OnInit {
 
     });
   }
-  
   getPackages(){
     const abc = this.pkgService.getUserName();
     console.log(abc);
