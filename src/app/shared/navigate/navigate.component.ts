@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./navigate.component.css']
 })
 export class NavigateComponent implements OnInit {
-
+  
   constructor(private rtr: Router) {
 
    }

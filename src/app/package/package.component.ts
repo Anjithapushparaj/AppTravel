@@ -7,13 +7,30 @@ import { PackageService } from './service/package.service';
   styleUrls: ['./package.component.css']
 })
 export class PackageComponent implements OnInit {
-
   packages = [];
-  constructor( private pkgService: PackageService) { }
-
+  myName;
+  employeeName = [];
+  empName;
+  constructor( private pkgService: PackageService){}
   ngOnInit(): void {
     this.getPackages();
+    this.getName();
+    this.getEmpName();
   }
+  getName(){
+    this.pkgService.getMyname().subscribe((name)=>{ 
+      this.myName = name;
+    });
+  }
+  getEmpName(){
+    this.pkgService.getPersonName().subscribe((pname)=>{ 
+      this.employeeName = pname;
+      console.log(this.employeeName);
+      this.empName = this.employeeName[0].name;
+
+    });
+  }
+  
   getPackages(){
     const abc = this.pkgService.getUserName();
     console.log(abc);
@@ -21,11 +38,7 @@ export class PackageComponent implements OnInit {
     this.pkgService.fetchPackages().subscribe((pkgData) => {
       this.packages = pkgData;
       console.log(pkgData);
-      });
+    });
   }
-
-  onCreatePackage(){
-
-  }
-
+  onCreatePackage(){}
 }

@@ -1,12 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 // import { HttpClient } from '@angular/common/http'
+interface Person {
+  name: string;
+  age: number;
+  phone: number;
+  qlf:string;
+}
 @Injectable({
   providedIn: 'root'
 })
 export class PackageService {
   packages = [
     {
+      
       pkdName:'Trivandrum Holiday',
       pkgDesc:'' ,
       destination: 'Trivandrum',
@@ -27,19 +34,32 @@ export class PackageService {
       price: 30000
     }
    ];
+   employee = [
+    {
+      name: 'Anjitha', 
+      age: 28, 
+      phone: 678,
+      qlf: 'Mtech'}
+
+   ];
 
   //  private http: HttpClient
   constructor(  ) { }
 
   getUserName(){
-    return 'Anjitha P';
+    return this.packages;
   }
   fetchPackages(): Observable<any[]>{
     return of(this.packages);
   }
+  getMyname(): Observable<string>{
+    return of('Anjitha'); 
+  }
+  getPersonName(): Observable<Person[]>{
+    return of(this.employee);
+  }
 
   // addPackage(): Observable<any>{
   //   return this.http.post('', {});
-  
   // }
 }
