@@ -8,7 +8,7 @@
         <th>Foodoptions</th>
         <th>Price</th>
         <tbody>
-            <tr *ngFor="let pkg of packg">
+            <tr *ngFor="let pkg of filteredPackages">
                 <td>{{ pkg.pkdName }}</td>
                 <td>{{ pkg.destination}}</td>
                 <td>{{ pkg.subLocations}}</td>
@@ -20,4 +20,7 @@
         </tbody>
     </table>
 
+</div>
+<div>
+    <h2>{{ testNew }}</h2>
 </div>
