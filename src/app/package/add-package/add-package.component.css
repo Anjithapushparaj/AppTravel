@@ -1,0 +1,17 @@
+.container{
+    margin: 8px;
+    font-weight: bold;
+    
+}
+input[type = text] {
+    width: 75%;
+    padding: 10px 6px;
+    border: 1px solid gray;
+    border-radius: 3px;
+}
+.field-container{
+    margin-top: 10px;
+}
+.checkbox-label{
+    margin-left: 4px;
+}

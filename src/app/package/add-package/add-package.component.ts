@@ -6,6 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-package.component.css']
 })
 export class AddPackageComponent implements OnInit {
+  isEditMode = false;
+  packageName;
+  location;
+  sublocation;
+  tripdays;
+  first;
+  foodOption1;
+  price;
 
   constructor() { }
 

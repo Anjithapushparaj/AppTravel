@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PackageService } from './service/package.service';
+import  { Router } from '@angular/router';
 
 @Component({
   selector: 'app-package',
@@ -12,7 +13,10 @@ export class PackageComponent implements OnInit {
   employeeName = [];
   empName;
   test = 3;
-  constructor( private pkgService: PackageService){}
+  constructor( 
+    private pkgService: PackageService, 
+    private router: Router
+  ){}
   ngOnInit(): void {
     // this.getPackages();
     this.getName();
@@ -57,7 +61,7 @@ export class PackageComponent implements OnInit {
     });
   }
   onCreatePackage(){
-    this.test += 1;
+    this.router.navigate(['/package/add']);
   }
   fetchPack(){
     this.getPackages();

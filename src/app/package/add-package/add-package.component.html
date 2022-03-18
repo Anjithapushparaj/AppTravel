@@ -1,1 +1,39 @@
-<p>add-package works!</p>
+<div class="container">
+    <h2>{{ isEditMode ? 'Edit': 'Add' }} Package</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="field-container">
+                <div>Package Name</div>
+                <input type="text" [(ngModel)]="packageName">
+            </div>
+            <div class="field-container">
+                <div>Sub Locations</div>
+                <input type="text" [(ngModel)]="sublocation">
+            </div>
+            <div class="field-container">
+                <div>Travel Options</div>
+                <input type="checkbox" [(ngModel)]="first">
+                <span class="checkbox-label">Car</span>
+            </div>
+            <div class="field-container">
+                <div>Price</div>
+                <input type="text" [(ngModel)]="price">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="field-container">
+                <div>Destination</div>
+                <input type="text" [(ngModel)]="location">
+            </div>
+            <div class="field-container">
+                <div>Tripdays</div>
+                <input type="text" [(ngModel)]="tripdays">
+            </div>
+            <div class="field-container">
+                <div>Food Options</div>
+                <input type="checkbox" [(ngModel)]="foodOption1">
+                <span class="checkbox-label">Breakfast</span>
+            </div>
+        </div>
+    </div>
+</div>
