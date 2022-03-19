@@ -58,6 +58,9 @@ export class PackageService {
   getPersonName(): Observable<Person[]>{
     return of(this.employee);
   }
+  getUserRole(){
+    return 'User';
+  }
 
   // addPackage(): Observable<any>{
   //   return this.http.post('', {});

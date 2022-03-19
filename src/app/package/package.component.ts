@@ -9,10 +9,11 @@ import  { Router } from '@angular/router';
 })
 export class PackageComponent implements OnInit {
   packages = [];
-  myName;
+  myName: string;
   employeeName = [];
   empName;
   test = 3;
+  isAdmin = false;
   constructor( 
     private pkgService: PackageService, 
     private router: Router
@@ -22,6 +23,7 @@ export class PackageComponent implements OnInit {
     this.getName();
     this.getEmpName();
     this.fetchPack();
+    this.isAdmin = (this.pkgService.getUserRole() === 'Admin');
     // this.getNewPackages();
   }
   // getNewPackages(){

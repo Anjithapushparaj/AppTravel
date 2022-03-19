@@ -8,7 +8,15 @@
             </div>
             <div class="field-container">
                 <div>Sub Locations</div>
-                <input type="text" [(ngModel)]="sublocation">
+                <input type="text" [(ngModel)]="sublocation" (keyup.enter)="addSublocation()" class="mb-1">
+                <div class="mt-1" *ngIf="sublocationError" style="color: red;">
+                    {{ sublocationError }}
+                </div>
+                <div class="mt-1">
+                    <span *ngFor="let subloc of sublocations" class="sublocation">
+                        {{subloc}}<label class="close" (click)="onRemoveSublocation(subloc)">x</label>
+                    </span>
+                </div>
             </div>
             <div class="field-container">
                 <div>Travel Options</div>
