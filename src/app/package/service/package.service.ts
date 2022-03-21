@@ -59,7 +59,10 @@ export class PackageService {
     return of(this.employee);
   }
   getUserRole(){
-    return 'User';
+    return 'Admin';
+  }
+  addPackage(pkg: any){
+    this.packages.push(pkg);
   }
 
   // addPackage(): Observable<any>{
