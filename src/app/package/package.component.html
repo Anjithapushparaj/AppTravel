@@ -4,10 +4,10 @@
         <input type="text" placeholder="Search">
         <button *ngIf="isAdmin" class="btn-cls" tooltip="click me" (click) = "onCreatePackage()">Create Package</button>    
     </div>
-    <div>
+    <!-- <div>
         <p>{{ myName}}</p>
         <p>{{ empName }}</p>
-    </div>
+    </div> -->
     <div>
         <app-list-package [packg]="packages" [test]="test"></app-list-package>
     </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-customer-list',
@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
+  @Input() customer: any[]; 
+  custDetails:any[];
 
   constructor() { }
 
   ngOnInit(): void {
+    this.getCustomerDetails();
+  }
+  getCustomerDetails(){
+    this.custDetails = this.customer;
   }
 
 }

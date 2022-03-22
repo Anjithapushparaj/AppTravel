@@ -3,9 +3,6 @@ import { CommonModule } from '@angular/common';
 import { CustomerComponent } from './customer.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
-
-
-
 @NgModule({
   declarations: [
     CustomerComponent,
@@ -14,6 +11,7 @@ import { AddCustomerComponent } from './add-customer/add-customer.component';
   ],
   imports: [
     CommonModule
-  ]
+  ],
+  exports:[CustomerComponent]
 })
 export class CustomerModule { }

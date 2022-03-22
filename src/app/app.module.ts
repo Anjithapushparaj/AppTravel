@@ -7,7 +7,7 @@ import { SharedModule } from './shared/shared.module';
 import { PackageModule } from './package/package.module';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
-
+import { CustomerModule } from './customer/customer.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +18,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     AppRoutingModule,
     SharedModule,
     PackageModule,
-    TooltipModule
+    TooltipModule,
+    CustomerModule
   ],
   providers: [],
   bootstrap: [AppComponent],
