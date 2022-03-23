@@ -8,9 +8,8 @@ import { CustomerService } from './service/customer.service';
   styleUrls: ['./customer.component.css']
 })
 export class CustomerComponent implements OnInit {
-
   navVal = 'from Link1';
-  customerDetails =[];
+  customerDetails = [];
   constructor(private route: Router,
     private custService:CustomerService) {
     const navg = this.route.getCurrentNavigation();
@@ -37,5 +36,9 @@ export class CustomerComponent implements OnInit {
       this.customerDetails = custData;
       console.log(this.customerDetails);
     })
+  }
+
+  onCreateCustomer(){
+    this.route.navigate(['/customer/add']);
   }
 }

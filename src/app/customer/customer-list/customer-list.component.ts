@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CustomerListComponent implements OnInit {
   @Input() customer: any[]; 
-  custDetails:any[];
+  custDetails=[];
 
   constructor() { }
 

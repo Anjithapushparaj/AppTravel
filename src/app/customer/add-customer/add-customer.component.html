@@ -1,1 +1,68 @@
-<p>add-customer works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="field-container">
+                <div>Customer Name</div>
+                <input type="text" [(ngModel)]="customerName">
+            </div> 
+            <div class="field-container">
+                <div>Phone Number</div>
+                <input type="text" [(ngModel)]="custPhoneNumber">
+            </div> 
+            <div class="field-container">
+                <div>Email Id</div>
+                <input type="text" [(ngModel)]="email">
+            </div> 
+            <div class="field-container">
+                <div>Address</div>
+                <input type="text" [(ngModel)]="custAddress">
+            </div> 
+        </div>
+
+    
+    
+        <div class="col-md-3">
+            <div class="field-container">
+                <div>Selected Package</div>
+                <input type="text" [(ngModel)]="selectedPKG">
+            </div> 
+            <div class="field-container">
+                <div>Boarding Location</div>
+                <input type="text" [(ngModel)]="boardingLoc">
+            </div>
+            <div class="field-container">
+                <div>Tripdays</div>
+                <input type="text" [(ngModel)]="tripDays">
+            </div> 
+            <div class="field-container">
+                <div>Trip Start Date</div>
+                <input type="text" [(ngModel)]="tripStart">
+            </div> 
+        </div>
+
+    
+    
+        <div class="col-md-3">
+            <div class="field-container">
+                <div>Trip End Date</div>
+                <input type="text" [(ngModel)]="tripEnd">
+            </div> 
+            <div class="field-container">
+                <div>Food Options</div>
+                <input type="text" [(ngModel)]="foodOpt">
+            </div> 
+            <div class="field-container">
+                <div>Travel Mode</div>
+                <input type="text" [(ngModel)]="travelMode">
+            </div> 
+            <div class="field-container">
+                <div>Price</div>
+                <input type="text" [(ngModel)]="custPrice">
+            </div> 
+            
+        </div> 
+    </div>
+    <div class="row mt-1">
+        <button type="button" (click)="addCust()">Submit</button>
+    </div>
+</div>

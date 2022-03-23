@@ -2,16 +2,15 @@
     background-color: rgb(2, 2, 31);
     color: aliceblue;
     padding: 4px;
-    border: 2px solid wheat;
-    
-    
+    border: 2px solid wheat;  
 }
 
 .btn-div{
-     display: flex; 
+    display: flex; 
     justify-content: space-between; 
     margin-left: 20px;
     margin-top: 50px;
+    margin-right: 10px;
 
 }
 .add-package{

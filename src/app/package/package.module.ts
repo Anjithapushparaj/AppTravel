@@ -5,9 +5,6 @@ import { ListPackageComponent } from './list-package/list-package.component';
 import { AddPackageComponent } from './add-package/add-package.component';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { FormsModule } from '@angular/forms';
-
-
-
 @NgModule({
   declarations: [
     PackageComponent,
@@ -19,7 +16,6 @@ import { FormsModule } from '@angular/forms';
     TooltipModule,
     FormsModule
   ],
-  
   exports:[PackageComponent]
 })
 export class PackageModule { }

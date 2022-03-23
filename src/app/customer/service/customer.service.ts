@@ -61,5 +61,8 @@ export class CustomerService {
   fetchCustomerDetails(): Observable<any[]>{
     return of(this.customers);
   }
+  addNewCustomer(cust:any){
+    this.customers.push(cust);
+  }
 
 }
