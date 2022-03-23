@@ -1,5 +1,6 @@
 <div class="table-container">
     <table class="w-100">
+        <th>Package Id</th>
         <th>Package Name</th>
         <th>Destination</th>
         <th>Sublocations</th>
@@ -9,6 +10,7 @@
         <th>Price</th>
         <tbody>
             <tr *ngFor="let pkg of filteredPackages">
+                <td>{{ pkg.pkgId}}</td>
                 <td>{{ pkg.pkdName }}</td>
                 <td>{{ pkg.destination}}</td>
                 <td>{{ pkg.subLocations}}</td>
