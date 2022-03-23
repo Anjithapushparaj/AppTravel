@@ -13,7 +13,7 @@ interface Person {
 export class PackageService {
   packages = [
     {
-      
+      pkgId:'PKG_1',
       pkdName:'Trivandrum Holiday',
       pkgDesc:'' ,
       destination: 'Trivandrum',
@@ -24,6 +24,7 @@ export class PackageService {
       price: 20000
     },
     {
+      pkgId:'PKG_2',
       pkdName:'Kochi',
       pkgDesc:'' ,
       destination: 'Kochi',
@@ -63,6 +64,15 @@ export class PackageService {
   }
   addPackage(pkg: any){
     this.packages.push(pkg);
+    console.log('NewPackages',this.packages);
+  }
+  getExsistingPackageIds(): Observable<string[]>{
+    const packageIds =[];
+    this.packages.map((pkg)=>{
+      packageIds.push(pkg.pkgId);
+    });
+    return of(packageIds);
+
   }
 
   // addPackage(): Observable<any>{

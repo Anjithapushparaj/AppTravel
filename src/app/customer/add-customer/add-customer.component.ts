@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../service/customer.service';
 import { Router } from '@angular/router';
+import { PackageService } from 'src/app/package/service/package.service';
 @Component({
   selector: 'app-add-customer',
   templateUrl: './add-customer.component.html',
@@ -19,10 +20,13 @@ export class AddCustomerComponent implements OnInit {
   boardingLoc;
   foodOpt;
   travelMode;
+  packages;
   constructor( private custService:CustomerService,
-    private custroute:Router) { }
+    private custroute:Router,
+    private pckService: PackageService) { }
 
   ngOnInit(): void {
+    this.getPackages();
   }
   addCust(){
     const customer = {
@@ -42,6 +46,11 @@ export class AddCustomerComponent implements OnInit {
     this.custService.addNewCustomer(customer);
     this.custroute.navigate(['/customer']);
     
+  }
+  getPackages(){
+    this.pckService.fetchPackages().subscribe((pkgs)=>{
+      console.log(pkgs);
+    })
   }
 
 }

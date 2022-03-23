@@ -19,10 +19,12 @@ export class AddPackageComponent implements OnInit {
   sublocations = [];
   sublocationError = '';
   subloc;
+  currentPackageId='';
 
   constructor( private service:PackageService, private rtr: Router) { }
 
   ngOnInit(): void {
+    this.getPkgId();
   }
   addSublocation(){
     this.sublocationError = '';
@@ -49,6 +51,7 @@ export class AddPackageComponent implements OnInit {
   }
   addPackage(){
     const pkg = { 
+      pkgId:this.getPkgId(),
       pkdName:this.packageName,
       pkgDesc:'' ,
       destination:this.location,
@@ -60,6 +63,22 @@ export class AddPackageComponent implements OnInit {
     };
     this.service.addPackage(pkg);
     this.rtr.navigate(['/package/list-package']);
+  }
+  getPkgId(){
+    this.service.getExsistingPackageIds().subscribe((pkgIds)=>{
+      const ids:number[]=[];
+      pkgIds.forEach((pkgId)=>{
+        console.log('split',pkgId.split('_'));
+        const id = pkgId.split('_')[1];
+        ids.push(parseInt(id));
+
+      })
+      const newId = Math.max(...ids) + 1;
+      console.log(newId);
+      // return 'PKG_'+newId;
+      this.currentPackageId ='PKG_'+newId;
+    })
+    return this.currentPackageId;
   }
   updateTravelOption(option){
     if(this.travelOptions.includes(option)){

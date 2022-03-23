@@ -14,9 +14,9 @@ export class NavigateComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSelect(val){
-    const abc = 'Link 2';
-    this.rtr.navigate([`/${val}`], { state: { abc }})
-  }
+  // onSelect(val){
+  //   const abc = 'Link 2';
+  //   this.rtr.navigate([`/${val}`], { state: { abc }})
+  // }
 
 }

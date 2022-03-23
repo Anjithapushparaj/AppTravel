@@ -5,6 +5,7 @@ import { CustomerListComponent } from './customer-list/customer-list.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { FormsModule } from '@angular/forms';
+import { PackageModule } from '../package/package.module';
 @NgModule({
   declarations: [
     CustomerComponent,
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     TooltipModule,
-    FormsModule
+    FormsModule,
+    PackageModule
   ]
 })
 export class CustomerModule { }
