@@ -33,6 +33,17 @@ export class PackageService {
       travelOptions: ['Bus', 'Train', 'Car'],
       foodOptions: ['Breakfast', 'Lunch', 'Dinner'],
       price: 30000
+    },
+    {
+      pkgId:'PKG_3',
+      pkdName:'Wayand Holiday',
+      pkgDesc:'' ,
+      destination: 'Wayanad',
+      subLocations: ['w1', 'w2', 'w3'],
+      tripDays: 2,
+      travelOptions: ['Bus', 'Train', 'Car'],
+      foodOptions: ['Breakfast', 'Lunch', 'Dinner'],
+      price: 3000
     }
    ];
    employee = [

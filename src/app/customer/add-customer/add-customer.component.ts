@@ -21,6 +21,8 @@ export class AddCustomerComponent implements OnInit {
   foodOpt;
   travelMode;
   packages;
+  minDate = new Date().toISOString().slice(0, 10) ; 
+  maxDate;
   constructor( private custService:CustomerService,
     private custroute:Router,
     private pckService: PackageService) { }
