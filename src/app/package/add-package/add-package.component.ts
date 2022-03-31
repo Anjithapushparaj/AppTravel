@@ -35,19 +35,33 @@ export class AddPackageComponent implements OnInit {
 
       return;
     }
-    if(this.sublocations.includes(this.sublocation)){
+   if(this.sublocations.includes(this.sublocation)){
       this.sublocationError = 'Duplicate Sublocation';
       return;
     }
     if(this.sublocation){
         this.sublocations.push(this.sublocation);
         this.sublocation = ''; 
-
     }
+
+    
   }
   onRemoveSublocation(val){
     const index = this.sublocations.indexOf(val);
     this.sublocations.splice(index,  1);
+  }
+  validateAndAddPackage(){
+    if(
+      this.packageName && 
+      this.location &&
+      this.sublocations.length &&
+      this.tripdays &&
+      this.travelOptions.length &&
+      this.foodOptions.length &&
+      this.price
+    ){
+      this.addPackage();
+    }
   }
   addPackage(){
     const pkg = { 

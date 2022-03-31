@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { PackageService } from './service/package.service';
 import  { Router } from '@angular/router';
+import { filter } from 'lodash';
 
 @Component({
   selector: 'app-package',
@@ -14,10 +15,17 @@ export class PackageComponent implements OnInit {
   empName;
   test = 3;
   isAdmin = false;
+  searchPattern;
+  filteredPackages;
   constructor( 
     private pkgService: PackageService, 
     private router: Router
   ){}
+    @HostListener('document:keydown.esc') hide(evt: KeyboardEvent){
+      this.searchPattern = '';
+      this.filteredPackages = filter(this.packages, (pkg) => pkg.pkdName.toLowerCase().includes(this.searchPattern));
+
+    }
   ngOnInit(): void {
     // this.getPackages();
     this.getName();
@@ -43,23 +51,10 @@ export class PackageComponent implements OnInit {
   }
   getPackages(){
     const abc = this.pkgService.getUserName();
-    console.log(abc);
-    // asychronous call     
+    console.log(abc)    
     this.pkgService.fetchPackages().subscribe((pkgData) => {
       this.packages = pkgData;
-    //   setTimeout(() => { 
-    //     this.packages=[{
-      
-    //       pkdName:'Wayanad Holiday',
-    //       pkgDesc:'' ,
-    //       destination: 'Wayanad',
-    //       subLocations: ['1', '2', '3'],
-    //       tripDays: 3,
-    //       travelOptions: ['Bus', 'Train', 'Car'],
-    //       foodOptions: ['Breakfast', 'Lunch', 'Dinner'],
-    //       price: 20000
-    //     }];
-    //   },2000);
+      this.filteredPackages = pkgData;
      });
   }
   onCreatePackage(){
@@ -67,5 +62,12 @@ export class PackageComponent implements OnInit {
   }
   fetchPack(){
     this.getPackages();
+  }
+  onSearchPackage(event){
+    console.log('searchPattern',this.searchPattern);
+    this.searchPattern = event ? event.target.value.toLowerCase():this.searchPattern;
+    this.filteredPackages = filter(this.packages, (pkg) => pkg.pkdName.toLowerCase().includes(this.searchPattern));
+    console.log('filteredPack',this.filteredPackages);
+
   }
 }

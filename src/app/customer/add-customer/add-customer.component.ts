@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { CustomerService } from '../service/customer.service';
 import { Router } from '@angular/router';
 import { PackageService } from 'src/app/package/service/package.service';
@@ -13,7 +13,7 @@ export class AddCustomerComponent implements OnInit {
   email;
   selectedPKG;
   tripDays;
-  tripStart;
+  tripStart = new Date().toISOString().slice(0, 10) ;
   tripEnd;
   custPrice;
   custAddress;
@@ -21,8 +21,12 @@ export class AddCustomerComponent implements OnInit {
   foodOpt;
   travelMode;
   packages;
-  minDate = new Date().toISOString().slice(0, 10) ; 
-  maxDate;
+  tripStartMinDate = new Date().toISOString().slice(0, 10) ; 
+  // tripStartMaxDate = new Date(2023);
+  packageIds = [];
+  packageIdmap = {};
+  warning =false;
+  selectedPackageTravelOptions=[];
   constructor( private custService:CustomerService,
     private custroute:Router,
     private pckService: PackageService) { }
@@ -47,12 +51,47 @@ export class AddCustomerComponent implements OnInit {
     }
     this.custService.addNewCustomer(customer);
     this.custroute.navigate(['/customer']);
-    
+    console.log(customer);
   }
   getPackages(){
     this.pckService.fetchPackages().subscribe((pkgs)=>{
-      console.log(pkgs);
+      this.packages = pkgs;
+      pkgs.forEach((pkg)=>{
+        this.packageIdmap[pkg.pkgId] = pkg.pkdName;
+      })
+
+      console.log('PackageIdmap',this.packageIdmap);
+      console.log('package2',this.packageIdmap['PKG_2']);
     })
+
   }
+  changePackage(){
+    this.packages.forEach((pkg)=>{
+        if(pkg.pkgId === this.selectedPKG){
+          this.selectedPackageTravelOptions =pkg.travelOptions;
+          console.log('Selected Package',pkg);
+          console.log('Travel Options',this.selectedPackageTravelOptions);
+        }
+      });
+  }
+  
+  
+  
+  
+  
+  // onChangeEndDate(){
+  //   // console.log('TripEnd:-',this.tripEnd);
+  //   // console.log('TripStart:-',this.tripStart);
+  //   if(this.tripStart > this.tripEnd){
+  //   alert("Please Change the start date");
+  //   this.tripStartMaxDate = this.tripEnd;
+  //   }
+  // }
+  // onChangeStartDate(){
+  //   if(this.tripEnd < this.tripStart ){
+  //     alert("Please Change the end date");
+  //     this.tripStartMaxDate = this.tripStart;
+  //     }
+  // }
 
 }
