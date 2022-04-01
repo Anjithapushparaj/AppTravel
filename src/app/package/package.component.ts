@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { PackageService } from './service/package.service';
 import  { Router } from '@angular/router';
 import { filter } from 'lodash';
@@ -9,6 +9,7 @@ import { filter } from 'lodash';
   styleUrls: ['./package.component.css']
 })
 export class PackageComponent implements OnInit {
+  @ViewChild('searchBox') searchBox : ElementRef;
   packages = [];
   myName: string;
   employeeName = [];
@@ -22,8 +23,18 @@ export class PackageComponent implements OnInit {
     private router: Router
   ){}
     @HostListener('document:keydown.esc') hide(evt: KeyboardEvent){
-      this.searchPattern = '';
-      this.filteredPackages = filter(this.packages, (pkg) => pkg.pkdName.toLowerCase().includes(this.searchPattern));
+      // this.searchPattern = '';
+      // this.filteredPackages = filter(this.packages, (pkg) => pkg.pkdName.toLowerCase().includes(this.searchPattern));
+      // console.log('filteredPack',this.filteredPackages);
+      // console.log('searchPattern',this.searchPattern);
+      
+      // console.log('SearchBoxValue',this.searchBox.nativeElement.value);
+      // console.log('searchbox',this.searchBox);
+    // console.log('searchPattern',this.searchPattern);
+      this.searchBox.nativeElement.value = 'trivandrum';
+      this.filteredPackages = filter(this.packages, (pkg) => pkg.pkdName.toLowerCase().includes(this.searchBox.nativeElement.value));
+      console.log('this.searchBox.nativeElement.value',this.searchBox.nativeElement.value);
+      console.log('filteredPack',this.filteredPackages);
 
     }
   ngOnInit(): void {
@@ -64,10 +75,10 @@ export class PackageComponent implements OnInit {
     this.getPackages();
   }
   onSearchPackage(event){
-    console.log('searchPattern',this.searchPattern);
-    this.searchPattern = event ? event.target.value.toLowerCase():this.searchPattern;
+    // console.log('searchPattern',this.searchPattern);
+    this.searchPattern = event ? event.target.value.toLowerCase() : this.searchPattern;
     this.filteredPackages = filter(this.packages, (pkg) => pkg.pkdName.toLowerCase().includes(this.searchPattern));
-    console.log('filteredPack',this.filteredPackages);
+    // console.log('filteredPack',this.filteredPackages);
 
   }
 }
