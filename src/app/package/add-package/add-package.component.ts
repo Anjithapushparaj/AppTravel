@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-package.component.css']
 })
 export class AddPackageComponent implements OnInit {
+ 
+  
   isEditMode = false;
   packageName;
   location;

@@ -18,7 +18,7 @@ export class PackageService {
       pkgDesc:'' ,
       destination: 'Trivandrum',
       subLocations: ['Kovalam', 'Varkala', 'Kanyakumari'],
-      tripDays: 3,
+      tripDays: 5,
       travelOptions: ['Train', 'Car'],
       foodOptions: ['Breakfast', 'Lunch', 'Dinner'],
       price: 20000
@@ -29,7 +29,7 @@ export class PackageService {
       pkgDesc:'' ,
       destination: 'Kochi',
       subLocations: ['Fortkochi', 'Marinedrive', 'Cherai'],
-      tripDays: 2,
+      tripDays: 4,
       travelOptions: ['Bus', 'Train', 'Car'],
       foodOptions: ['Breakfast', 'Lunch', 'Dinner'],
       price: 30000
@@ -40,7 +40,7 @@ export class PackageService {
       pkgDesc:'' ,
       destination: 'Wayanad',
       subLocations: ['w1', 'w2', 'w3'],
-      tripDays: 2,
+      tripDays: 10,
       travelOptions: ['Bus', 'Train', 'Car'],
       foodOptions: ['Breakfast', 'Lunch', 'Dinner'],
       price: 3000
@@ -51,7 +51,7 @@ export class PackageService {
       pkgDesc:'' ,
       destination: 'Thrissur',
       subLocations: ['t1', 't2', 't3'],
-      tripDays: 2,
+      tripDays: 7,
       travelOptions: ['Bus', 'Train', 'Car'],
       foodOptions: ['Breakfast', 'Lunch', 'Dinner'],
       price: 3000
