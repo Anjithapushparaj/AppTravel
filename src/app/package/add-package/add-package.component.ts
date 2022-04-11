@@ -81,13 +81,13 @@ export class AddPackageComponent implements OnInit {
     this.rtr.navigate(['/package/list-package']);
   }
   getPkgId(){
-    this.service.getExsistingPackageIds().subscribe((pkgIds)=>{
+    
+      this.service.getExsistingPackageIds().subscribe((pkgIds)=>{
       const ids:number[]=[];
       pkgIds.forEach((pkgId)=>{
         console.log('split',pkgId.split('_'));
         const id = pkgId.split('_')[1];
         ids.push(parseInt(id));
-
       })
       const newId = Math.max(...ids) + 1;
       console.log(newId);

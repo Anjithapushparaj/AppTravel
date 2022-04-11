@@ -6,6 +6,7 @@ import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { FormsModule } from '@angular/forms';
 import { PackageModule } from '../package/package.module';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead'; 
 @NgModule({
   declarations: [
     CustomerComponent,
@@ -16,7 +17,8 @@ import { PackageModule } from '../package/package.module';
     CommonModule,
     TooltipModule,
     FormsModule,
-    PackageModule
+    PackageModule,
+    TypeaheadModule.forRoot(),
   ]
 })
 export class CustomerModule { }

@@ -1,19 +1,32 @@
 <div class="table-container">
     <table class="w-100">
+        <th>Customer Id</th>
         <th>Customer Name</th>
         <th>Phone</th>
         <th>Email</th>
         <th>Selected Package</th>
+        <th>Sub Locations</th>
+        <th>Food Options</th>
         <th>Tripdays</th>
         <th>Address</th>
+        <th>Price</th>
+        <th>Actions</th>
         <tbody>
             <tr *ngFor="let cust of custDetails">
+                <td>{{cust.customerId}}</td>
                 <td>{{cust.customerName }}</td>
                 <td>{{ cust.phoneNumber}}</td>
                 <td>{{ cust.email}}</td>
                 <td>{{ cust.packageName}}</td>
+                <td>{{cust.sublocations}}</td>
+                <td>{{cust.foodOptions}}</td>
                 <td>{{cust.tripDays}}</td>
                 <td>{{ cust.address}}</td>
+                <td>{{cust.price}}</td>
+                <td>
+                    <span class="action" (click)="editCustomerDetails(cust)">Edit</span>
+                    <span  class="action"(click)="deleteCustomerDetails(cust.customerId)">Delete</span>
+                </td>
             </tr>
         </tbody>
     </table>

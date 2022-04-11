@@ -1,7 +1,7 @@
 .navcls{
     display: block;
-    color: rgb(10, 3, 46); 
-    background-color: rgb(140, 140, 250);
+    color: rgb(7, 4, 22); 
+    background-color: rgb(148, 148, 240);
     padding: 10px;
 }
 .navelm{
@@ -17,6 +17,6 @@ li:hover{
     color: rgb(143, 89, 18);
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
-.navelm:hover{
+/* .navelm:hover{
     background-color: rgb(175, 206, 247);
-}
+} */

@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CustomerService } from '../service/customer.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-customer-list',
@@ -9,7 +11,9 @@ export class CustomerListComponent implements OnInit {
   @Input() customer: any[]; 
   custDetails=[];
 
-  constructor() { }
+  constructor( 
+    private rtr:Router, 
+    private custService:CustomerService) { }
 
   ngOnInit(): void {
     this.getCustomerDetails();
@@ -17,5 +21,17 @@ export class CustomerListComponent implements OnInit {
   getCustomerDetails(){
     this.custDetails = this.customer;
   }
+  editCustomerDetails(customer:any){
+    this.rtr.navigate(['/customer/add'],{ state: { customer }});
+  }
+  deleteCustomerDetails(id){
+    console.log('customerId',id);
+    this.custService.deleteCustomer(id);
+      this.custService.fetchCustomerDetails().subscribe((data)=>{
+        this.custDetails =data;
+      })
+
+  }
+  
 
 }

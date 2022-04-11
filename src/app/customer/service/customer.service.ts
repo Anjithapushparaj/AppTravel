@@ -18,8 +18,10 @@ export class CustomerService {
       tripEndDate:'2022-03-20',
       price:30000,
       address:'ADDRESS_1',
-      boardingLocation:'',
+      boardingLocation:'Trivandrum',
       foodOptions:['Breakfast', 'Lunch', 'Dinner'],
+      sublocations:['1','2','3'],
+
       travelMode:'Bus'
       // discount:
       // tripStatus:
@@ -36,8 +38,9 @@ export class CustomerService {
       tripEndDate:'2022-03-20',
       price:30000,
       address:'ADDRESS_2',
-      boardingLocation:'',
+      boardingLocation:'Kochi',
       foodOptions:['Breakfast', 'Lunch', 'Dinner'],
+      sublocations:['1','2','3'],
       travelMode:'Bus'
     },
     {
@@ -52,8 +55,9 @@ export class CustomerService {
       tripEndDate:'2022-03-20',
       price:30000,
       address:'ADRESS_3',
-      boardingLocation:'',
+      boardingLocation:'Pathanamthitta',
       foodOptions:['Breakfast', 'Lunch', 'Dinner'],
+      sublocations:['1','2','3'],
       travelMode:'Bus'
     }
   ];
@@ -64,5 +68,21 @@ export class CustomerService {
   addNewCustomer(cust:any){
     this.customers.push(cust);
   }
+  getExsistingCustomerIds(): Observable<string[]>{
+    const customerIds =[];
+    this.customers.map((cust)=>{
+      customerIds.push(cust.customerId);
+    });
+    return of(customerIds);
 
+  }
+  deleteCustomer(id:string){
+    const customers = [];
+    this.customers.forEach((cust)=>{
+      if(cust.customerId !== id){
+        customers.push(cust);
+      }
+    })
+    this.customers = customers;
+  }
 }

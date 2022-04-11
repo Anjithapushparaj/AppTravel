@@ -20,7 +20,7 @@ export class PackageService {
       subLocations: ['Kovalam', 'Varkala', 'Kanyakumari'],
       tripDays: 5,
       travelOptions: ['Train', 'Car'],
-      foodOptions: ['Breakfast', 'Lunch', 'Dinner'],
+      foodOptions: ['Lunch', 'Dinner'],
       price: 20000
     },
     {

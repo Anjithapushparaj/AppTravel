@@ -10,3 +10,12 @@
 th,td{
     padding: 10px;
 }
+.action{
+ border-radius: 5px;
+ padding: 2px;
+ margin-right: 5px;
+}
+.action:hover{
+    color: blueviolet;
+    cursor: pointer;
+   }
