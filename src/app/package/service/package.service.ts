@@ -66,7 +66,19 @@ export class PackageService {
       travelOptions: ['Bus', 'Train', 'Car'],
       foodOptions: ['Breakfast', 'Lunch', 'Dinner'],
       price: 3000
+    },
+    {
+      pkgId:'PKG_6',
+      pkdName:'Tour Pack 6',
+      pkgDesc:'' ,
+      destination: 'India',
+      subLocations: ['Kerala', 'Karnataka', 'TN', 'AP'],
+      tripDays: 2,
+      travelOptions: ['Bus', 'Train', 'Car','Flight'],
+      foodOptions: ['Breakfast', 'Lunch', 'Dinner'],
+      price: 3000
     }
+
    ];
    employee = [
     {

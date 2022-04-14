@@ -150,5 +150,7 @@
 
 </div>
     <div class="row btn-container">
-        <button type="button" (click)="addCust()">Submit</button>
+        <button type="button" *ngIf="!isEdit" (click)="addCust()">Submit</button>
+        <button type="button" *ngIf="isEdit" (click)="updateCust()">Update</button>
+
     </div>

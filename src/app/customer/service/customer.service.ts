@@ -19,12 +19,9 @@ export class CustomerService {
       price:30000,
       address:'ADDRESS_1',
       boardingLocation:'Trivandrum',
-      foodOptions:['Breakfast', 'Lunch', 'Dinner'],
+      foodOptions:['Dinner'],
       sublocations:['1','2','3'],
-
       travelMode:'Bus'
-      // discount:
-      // tripStatus:
     },
     {
       customerId: 'CUST_000002',
@@ -59,6 +56,23 @@ export class CustomerService {
       foodOptions:['Breakfast', 'Lunch', 'Dinner'],
       sublocations:['1','2','3'],
       travelMode:'Bus'
+    },
+    {
+      customerId:'CUST_000004',
+      customerType:'NON_PACKAGE',
+      customerName:'Luminar Technolab',
+      phoneNumber:9544001241,
+      email:'customer3@gmail.com',
+      selectedPackage:'PKG_6',
+      tripDays:2,
+      tripStartDate:'2022-03-11',
+      tripEndDate:'2022-03-20',
+      price:3000,
+      address:'ADRESS_3',
+      boardingLocation:'Pathanamthitta',
+      foodOptions:['Breakfast', 'Lunch', 'Dinner'],
+      sublocations:['Kerala','Karnataka'],
+      travelMode:['Flight']
     }
   ];
   constructor() { }
@@ -84,5 +98,10 @@ export class CustomerService {
       }
     })
     this.customers = customers;
+  }
+  updateCustomer(customerId:string, customer:any){
+    const index = this.customers.findIndex(cust=>cust.customerId === customerId);
+    console.log('Index',index);
+    this.customers[index] = customer;
   }
 }

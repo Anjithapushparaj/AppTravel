@@ -107,6 +107,7 @@ export class AddCustomerComponent implements OnInit {
   packageSublocations = [];
   packageFoodOptions = [];
   selectedSublocationOptions = [];
+  editCustomerDetails = {};
   customerPrice;
   mailId;
   errorMessage = '';
@@ -121,17 +122,30 @@ export class AddCustomerComponent implements OnInit {
       if(navigation && navigation.extras && navigation.extras.state){
         const { state } =navigation.extras;
         if(state['customer']){
-          this.customerFName = state['customer'].customerName;
+          this.isEdit = true;
+          this.editCustomerDetails = state['customer'];
+          const nameArray = state['customer'].customerName.split('\t');
+          console.log(nameArray);
+          this.customerFName =nameArray[0];
+          this.customerLName =nameArray[1];
           this.custPhoneNumber = state['customer'].phoneNumber;
           this.email = state['customer'].email;
           this.boardingLoc = state['customer'].boardingLocation;
-          this.house = state['customer'].address;
+          const addressArray = state['customer'].address.split('\t');
+          console.log(addressArray);
+          this.house = addressArray[0];
+          this.locality=addressArray[1];
+          this.district = addressArray[2];
+          this.state =addressArray[3];
+          this.country =addressArray[4];
+          // this.house = state['customer'].address;
           this.selectedPKG = state['customer'].selectedPackage;
           this.travelMode = state['customer'].travelMode;
-          this.selectedFoodOptions = state['customer'].selectedFoodOptions;
+          this.selectedFoodOptions = state['customer'].foodOptions;
           this.tripDays = state['customer'].tripDays;
           this.selectedSublocationOptions = state['customer'].sublocations;
           this.customerPrice = state['customer'].price;
+          this.currentCustomerId = state['customer'].customerId;
           
         }
       }
@@ -139,35 +153,44 @@ export class AddCustomerComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPackages();
-    this.getCustId();
+    if(!this.isEdit){
+      this.getCustId();
+    }  
+    else{
+
+    } 
   }
   addCust() {
     if(this.customerLName === ''){
       this.errorMsg = 'This field is mandatory';
     }
     else{
-      const customer = {
-        customerId: this.currentCustomerId,
-        customerType:this.custType,
-        customerName: this.customerFName.concat('\t', this.customerLName),
-        phoneNumber: this.custPhoneNumber,
-        email: this.mailId,
-        selectedPackage: this.selectedPKG,
-        tripDays: this.tripDays,
-        tripStartDate: this.tripStart,
-        tripEndDate: this.tripEnd,
-        price: this.customerPrice,
-        address: this.custAddress,
-        boardingLocation: this.boardingLoc,
-        foodOptions: this.selectedFoodOptions,
-        sublocations: this.selectedSublocationOptions,
-        travelMode: this.travelMode
-      }
+      const customer = this.getCustomerObject();
       this.custService.addNewCustomer(customer);
       this.custroute.navigate(['/customer']);
       console.log(customer);
     }
     
+  }
+  getCustomerObject(){
+    return {
+      customerId: this.currentCustomerId,
+      customerType:this.custType,
+      customerName: this.customerFName.concat('\t', this.customerLName),
+      phoneNumber: this.custPhoneNumber,
+      email: this.mailId,
+      selectedPackage: this.selectedPKG,
+      tripDays: this.tripDays,
+      tripStartDate: this.tripStart,
+      tripEndDate: this.tripEnd,
+      price: this.customerPrice,
+      address: this.house + '\t'+this.locality+'\t'+ this.district +'\t'+this.state+'\t'+this.country,
+      boardingLocation: this.boardingLoc,
+      foodOptions: this.selectedFoodOptions,
+      sublocations: this.selectedSublocationOptions,
+      travelMode: this.travelMode
+    }
+
   }
 
   getPackages() {
@@ -176,27 +199,33 @@ export class AddCustomerComponent implements OnInit {
       pkgs.forEach((pkg) => {
         this.packageIdmap[pkg.pkgId] = pkg.pkdName;
       })
-      console.log('PackageIdmap', this.packageIdmap);
-      console.log('package2', this.packageIdmap['PKG_2']);
+      // console.log('PackageIdmap', this.packageIdmap);
+      // console.log('package2', this.packageIdmap['PKG_2']);
+      if(this.isEdit){
+        this.changePackage();
+      }
     })
   }
 
   changePackage() {
     this.packages.forEach((pkg) => {
       if (pkg.pkgId === this.selectedPKG) {
-        this.selectedPackageTravelOptions = pkg.travelOptions;
-        this.tripMax = pkg.tripDays;
+        if(!this.isEdit){
+        this.customerPrice = pkg.price;
         this.tripDays = pkg.tripDays;
-        console.log('Selected Package', pkg);
-        console.log('Travel Options', this.selectedPackageTravelOptions);
-        this.packageFoodOptions = [...pkg.foodOptions];
-        this.packageSublocations = [...pkg.subLocations];
         this.selectedFoodOptions = [...pkg.foodOptions];
         this.selectedSublocationOptions = [...pkg.subLocations];
-        this.customerPrice = pkg.price;
+        }
+        this.selectedPackageTravelOptions = pkg.travelOptions;
+        this.tripMax = pkg.tripDays;
         this.packageCost = pkg.price;
-        console.log('FoodOptions', this.packageFoodOptions);
-        console.log('Sublocations', this.packageSublocations);
+
+        // console.log('Selected Package', pkg);
+        // console.log('Travel Options', this.selectedPackageTravelOptions);
+        this.packageFoodOptions = [...pkg.foodOptions];
+        this.packageSublocations = [...pkg.subLocations];
+        // console.log('FoodOptions', this.packageFoodOptions);
+        // console.log('Sublocations', this.packageSublocations);
 
       }
     });
@@ -256,6 +285,11 @@ export class AddCustomerComponent implements OnInit {
       // return 'PKG_'+newId;
       this.currentCustomerId = 'CUST_' +'00000' +newId;
     })
-    return this.currentCustomerId;
+    // return this.currentCustomerId;
+  }
+  updateCust(){
+    const customer = this.getCustomerObject();
+    this.custService.updateCustomer(this.currentCustomerId,customer);
+    this.custroute.navigate(['/customer']);
   }
 }
